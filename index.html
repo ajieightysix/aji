@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Keren + Dark Mode</title>
+    <style>
+        /* TEMA DAFTAR WARNA (CSS VARIABLES) */
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-color: #eeeeee;
+            --input-bg: #ffffff;
+        }
+
+        /* Variabel saat Dark Mode aktif */
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-sub: #b0b0b0;
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+        }
+
+        /* Desain Umum */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Kartu Profil */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        /* Tombol Sakelar Dark Mode */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--border-color);
+            color: var(--text-main);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        /* Foto Profil */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #007bff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 10px 0 5px 0;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: var(--text-sub);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        /* Tombol Media Sosial */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .whatsapp { background-color: #25d366; }
+        .instagram { background-color: #e1306c; }
+        .tiktok { background-color: #010101; }
+
+        /* Formulir Pesan */
+        .message-form {
+            text-align: left;
+            border-top: 2px solid var(--border-color);
+            padding-top: 25px;
+        }
+
+        .message-form h3 {
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            
+            <button class="theme-toggle-btn" onclick="toggleDarkMode()">Ganti Mode 🌙</button>
+            
+            <img src="foto aji.jpg" alt="Foto Profil" class="profile-img">
+
+            <h1>Muhammad Kartaji</h1>
+            <p class="subtitle">Network Engineer</p>
+
+            <div class="social-links">
+                <a href="https://wa.me/6283122276400" target="_blank" class="btn-social whatsapp">💬 WhatsApp Saya</a>
+                <a href="https://instagram.com/aji.eightysix" target="_blank" class="btn-social instagram">📸 Instagram</a>
+                <a href="https://tiktok.com/@mkartaji" target="_blank" class="btn-social tiktok">🎵 TikTok</a>
+            </div>
+
+            <div class="message-form">
+                <h3>📩 Tinggalkan Pesan</h3>
+                <form onsubmit="kirimKeWA(event)">
+                    <div class="form-group">
+                        <label for="nama">Nama:</label>
+                        <input type="text" id="nama" required placeholder="Masukkan nama Side">
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan:</label>
+                        <textarea id="pesan" rows="4" required placeholder="Tulis pesan untuk Aji..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim🚀</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 1. Logika Mengubah Tema (Dark Mode / Light Mode)
+        function toggleDarkMode() {
+            const htmlElement = document.documentElement;
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const button = document.querySelector('.theme-toggle-btn');
+            
+            if (currentTheme === 'dark') {
+                htmlElement.removeAttribute('data-theme');
+                button.innerText = "Ganti Mode 🌙";
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                button.innerText = "Ganti Mode ☀️";
+            }
+        }
+
+        // 2. Logika Kirim Pesan Otomatis ke WhatsApp
+        function kirimKeWA(event) {
+            event.preventDefault();
+
+            // Masukkan nomor WA kamu di sini (Gunakan kode 62 di depan)
+            const nomorWA = "6283122276400"; 
+
+            const nama = document.getElementById('nama').value;
+            const pesan = document.getElementById('pesan').value;
+
+            const teksPesan = `Halo, saya *${Aji}* dari website portofolio Anda.%0A%0A*Pesan:*%0A${pesan}`;
+            const urlWhatsApp = `https://wa.me/6283122276400?text=${teksPesan}`;
+
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+
+</body>
+</html>
